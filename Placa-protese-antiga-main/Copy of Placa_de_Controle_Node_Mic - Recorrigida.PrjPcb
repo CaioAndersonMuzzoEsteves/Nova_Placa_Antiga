@@ -66,23 +66,6 @@ GenerateClassCluster=0
 DocumentUniqueId=EUFYEEGP
 
 [Document2]
-DocumentPath=C:\Users\AISLA\Downloads\Biblioteca_Ex_Machina_v1.5.0\Biblioteca_Ex_Machina_v1.5.0\Project Outputs for Biblioteca_Ex_Machina_v1.5.0\Biblioteca_Ex_Machina_v1.5.0.IntLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
-
-[Document3]
 DocumentPath=Copy of SCH Placa presentation.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -99,7 +82,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=SFJAMKIY
 
-[Document4]
+[Document3]
 DocumentPath=CAMtastic1.Cam
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -115,74 +98,6 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
-
-[GeneratedDocument1]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.EXTREP
-DItemRevisionGUID=
-
-[GeneratedDocument2]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GBL
-DItemRevisionGUID=
-
-[GeneratedDocument3]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GBO
-DItemRevisionGUID=
-
-[GeneratedDocument4]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GBP
-DItemRevisionGUID=
-
-[GeneratedDocument5]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GBS
-DItemRevisionGUID=
-
-[GeneratedDocument6]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GKO
-DItemRevisionGUID=
-
-[GeneratedDocument7]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GM1
-DItemRevisionGUID=
-
-[GeneratedDocument8]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GM13
-DItemRevisionGUID=
-
-[GeneratedDocument9]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GM15
-DItemRevisionGUID=
-
-[GeneratedDocument10]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GPB
-DItemRevisionGUID=
-
-[GeneratedDocument11]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GPT
-DItemRevisionGUID=
-
-[GeneratedDocument12]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GTL
-DItemRevisionGUID=
-
-[GeneratedDocument13]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GTO
-DItemRevisionGUID=
-
-[GeneratedDocument14]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GTP
-DItemRevisionGUID=
-
-[GeneratedDocument15]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.GTS
-DItemRevisionGUID=
-
-[GeneratedDocument16]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.REP
-DItemRevisionGUID=
-
-[GeneratedDocument17]
-DocumentPath=C:\Users\AISLA\AppData\Local\Temp\ee6f45ec-52b4-4a2f-bf7e-fac6e0f457b1_Prótese antiga- corrigida.zip.7b1\Placa Microfone Node MCU\Project Outputs for Copy of Placa_de_Controle_Node_Mic - Recorrigida\Copy of PCB final.RUL
-DItemRevisionGUID=
 
 [Configuration1]
 Name=Sources
@@ -422,7 +337,7 @@ OutputDefault3=0
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=EPSON L575 Series
+TargetPrinter=Microsoft Print to PDF
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 OutputType1=NC Drill
 OutputName1=NC Drill Files
