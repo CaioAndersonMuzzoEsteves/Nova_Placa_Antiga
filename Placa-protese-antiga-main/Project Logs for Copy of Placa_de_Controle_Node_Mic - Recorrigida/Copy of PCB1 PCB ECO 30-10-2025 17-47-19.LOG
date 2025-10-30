@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=NetD1_2 Pin=U1-2
+Added Component: Designator=S?(SW_RF1-1A-DC-2-R-1)
+Add component (AddParameter): Name = "Check_prices"; Value = "https://www.snapeda.com/parts/RF1-1A-DC-2-R-1/Switch+Components/view-part/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Switch Components"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "RF1-1A-DC-2-R-1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/RF1-1A-DC-2-R-1/Switch+Components/view-part/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetD1_2 Pin=S?-2
+Added Pin To Net: NetName=NetS?_1 Pin=S?-1
+Added Pin To Net: NetName=NetS?_1 Pin=U1-2
+Added Net: Name=NetS?_1
+Added Member To Class: ClassName=Copy of SCH Placa presentation Member=Component S? RF1-1A-DC-2-R-1

@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=NetD1_2 Pin=S?-2
+Removed Member From Class: ClassName=Copy of SCH Placa presentation Member=S?
+Added Pin To Net: NetName=NetD1_2 Pin=U1-2
