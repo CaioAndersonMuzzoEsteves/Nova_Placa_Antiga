@@ -1,0 +1,603 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD22\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">30/10/2025</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">17:17:54</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc" class="file"><acronym title="C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc">C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">89</td></tr>
+</table>
+</td>
+</table><a name="IDJPVXJ5O3M3WKKP045DIXKJG2WIOJY0J4UZIALJMX5GYSIVKGQ5MO"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLIM4SHFRLBTNNRT5OZD0SXQLKDOC3212M23MOSAMHQJ3QJKDYWO">Clearance Constraint (Gap=0.3mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZMQZVSFNFJ1NDR2R2NZYW5RUQKTKUD1NUTIXMNPLZNXXWVJ2V2VB">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXVX004FN3Q22E2YJYPN3YZOOQJO1YTTE5M5OJFQ4JM1GUZCU1TL">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">14</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDD4JRZW523I0GLZO42G4DCXV2VDOKSL4JVW2A1GL4Z4KOCUCCUUAC">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID20BEOIYNJRTCMZO0NLR4QE3OHO0HQ1YA0O5O3JDX4ENTJFH22IWB">Width Constraint (Min=0.3mm) (Max=10mm) (Preferred=0.3mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUHKPHATULS4NBL1TS5DO3EFMLMQSQ0BJ3YIXZMB1TLCTRG4ZNRJB">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOKK2TITYPXIJMQSHLR32GKJSM2GI4QURVYODTMNKQATKADZGRIO">Hole Size Constraint (Min=0.4mm) (Max=10mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDT2NHHQKZTHZFAHUL2ULBSWUSF4RRIZK3K5QEMCYRFMA2R5R2OM">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHOKMV4ZJOQT5UPDDWHAAZ4IYEF3TEI1DX3WXYXWOGO5IBK0ZNM">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJBOSOWE3TXJLOLECS3MYMTUYMOH5EKFPKSG4PQLWNBH0A2ZLSEXF">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">75</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDDTJIVEX1KZBDJOEFJQ0H0E0XTEUP15D1IGC31XJRDV4ZFR45H1RE">Silk to Silk (Clearance=0.3mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3CMVN1F0KURTEJ41XO1BA0FUQF0MBSE2U0IHS2FMY1A4LLVGDHBK">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDETZPHWTQFD4AFWD5ONXR33DX0IUAA2KMLB1M01L2YZ2WNRRCG5FL">Room Copy of SCH Placa presentation (Bounding Region = (97.028mm, 50.419mm, 152.4mm, 106.299mm) (InComponentClass('Copy of SCH Placa presentation'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDL5GG4CTHJJ1OOXASDVZKZQZAGN5GEFGWEOKYSKELOM2WGKK4IVUJ">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">89</td>
+</tr>
+</table><br><a name="IDXVX004FN3Q22E2YJYPN3YZOOQJO1YTTE5M5OJFQ4JM1GUZCU1TL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4966.236mil|Location2.X=5249.748mil|Location1.Y=2811.472mil|Location2.Y=3185.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4966.236mil|Location2.X=5249.748mil|Location1.Y=2811.472mil|Location2.Y=3185.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D2-1(126.994mm,72.263mm) on Multi-Layer And Pad U1-26(132.588mm,79.502mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4820mil|Location2.X=5099.764mil|Location1.Y=2190mil|Location2.Y=2945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4820mil|Location2.X=5099.764mil|Location1.Y=2190mil|Location2.Y=2945mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Track (124.841mm,58.039mm)(124.968mm,58.166mm) on Bottom Layer And Pad D2-1(126.994mm,72.263mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5129.504mil|Location2.X=5575.496mil|Location1.Y=2049.504mil|Location2.Y=2120.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5129.504mil|Location2.X=5575.496mil|Location1.Y=2049.504mil|Location2.Y=2120.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J2-3(131.191mm,52.959mm) on Multi-Layer And Pad J1-3(140.716mm,52.959mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5504.504mil|Location2.X=5698.528mil|Location1.Y=2049.504mil|Location2.Y=2318.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5504.504mil|Location2.X=5698.528mil|Location1.Y=2049.504mil|Location2.Y=2318.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J1-3(140.716mm,52.959mm) on Multi-Layer And Pad LED1-1(143.891mm,58.039mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5129.504mil|Location2.X=5323.528mil|Location1.Y=2049.504mil|Location2.Y=2318.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5129.504mil|Location2.X=5323.528mil|Location1.Y=2049.504mil|Location2.Y=2318.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J2-3(131.191mm,52.959mm) on Multi-Layer And Pad LED2-1(134.366mm,58.039mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4379.504mil|Location2.X=4820.496mil|Location1.Y=2049.504mil|Location2.Y=2120.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4379.504mil|Location2.X=4820.496mil|Location1.Y=2049.504mil|Location2.Y=2120.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J4-3(112.141mm,52.959mm) on Multi-Layer And Pad J3-3(121.539mm,52.959mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4749.504mil|Location2.X=4948.528mil|Location1.Y=2049.504mil|Location2.Y=2318.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4749.504mil|Location2.X=4948.528mil|Location1.Y=2049.504mil|Location2.Y=2318.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J3-3(121.539mm,52.959mm) on Multi-Layer And Pad LED3-1(124.841mm,58.039mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4379.504mil|Location2.X=4573.528mil|Location1.Y=2049.504mil|Location2.Y=2318.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4379.504mil|Location2.X=4573.528mil|Location1.Y=2049.504mil|Location2.Y=2318.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J4-3(112.141mm,52.959mm) on Multi-Layer And Pad LED4-1(115.316mm,58.039mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4004.504mil|Location2.X=4198.528mil|Location1.Y=2044.504mil|Location2.Y=2318.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4004.504mil|Location2.X=4198.528mil|Location1.Y=2044.504mil|Location2.Y=2318.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J5-3(102.616mm,52.832mm) on Multi-Layer And Pad LED5-1(105.791mm,58.039mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4820mil|Location2.X=5390mil|Location1.Y=2190mil|Location2.Y=2385mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4820mil|Location2.X=5390mil|Location1.Y=2190mil|Location2.Y=2385mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Track (124.841mm,58.039mm)(124.968mm,58.166mm) on Bottom Layer And Pad LED2-1(134.366mm,58.039mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4131.472mil|Location2.X=4573.528mil|Location1.Y=2251.472mil|Location2.Y=2318.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4131.472mil|Location2.X=4573.528mil|Location1.Y=2251.472mil|Location2.Y=2318.528mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad LED5-1(105.791mm,58.039mm) on Multi-Layer And Pad LED4-1(115.316mm,58.039mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4490.252mil|Location2.X=5449.748mil|Location1.Y=3974.504mil|Location2.Y=4085.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4490.252mil|Location2.X=5449.748mil|Location1.Y=3974.504mil|Location2.Y=4085.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-14(114.808mm,102.362mm) on Multi-Layer And Pad U1-5(137.668mm,102.362mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5190.252mil|Location2.X=5849.748mil|Location1.Y=3074.504mil|Location2.Y=3185.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5190.252mil|Location2.X=5849.748mil|Location1.Y=3074.504mil|Location2.Y=3185.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-26(132.588mm,79.502mm) on Multi-Layer And Pad U1-20(147.828mm,79.502mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5190.252mil|Location2.X=5449.748mil|Location1.Y=3074.504mil|Location2.Y=4085.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5190.252mil|Location2.X=5449.748mil|Location1.Y=3074.504mil|Location2.Y=4085.496mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-26(132.588mm,79.502mm) on Multi-Layer And Pad U1-5(137.668mm,102.362mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDJBOSOWE3TXJLOLECS3MYMTUYMOH5EKFPKSG4PQLWNBH0A2ZLSEXF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4276.867mil|Location2.X=4289.207mil|Location1.Y=2306.836mil|Location2.Y=2318.086mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4276.867mil|Location2.X=4289.207mil|Location1.Y=2306.836mil|Location2.Y=2318.086mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.154mm &lt; 0.254mm) Between Arc (107.091mm,58.039mm) on Top Overlay And Pad LED5-2(108.331mm,58.039mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4276.867mil|Location2.X=4289.153mil|Location1.Y=2251.913mil|Location2.Y=2263.163mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4276.867mil|Location2.X=4289.153mil|Location1.Y=2251.913mil|Location2.Y=2263.163mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.154mm &lt; 0.254mm) Between Arc (107.091mm,58.039mm) on Top Overlay And Pad LED5-2(108.331mm,58.039mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4651.867mil|Location2.X=4664.153mil|Location1.Y=2251.913mil|Location2.Y=2263.163mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4651.867mil|Location2.X=4664.153mil|Location1.Y=2251.913mil|Location2.Y=2263.163mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.154mm &lt; 0.254mm) Between Arc (116.616mm,58.039mm) on Top Overlay And Pad LED4-2(117.856mm,58.039mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4651.867mil|Location2.X=4664.207mil|Location1.Y=2306.836mil|Location2.Y=2318.086mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4651.867mil|Location2.X=4664.207mil|Location1.Y=2306.836mil|Location2.Y=2318.086mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.154mm &lt; 0.254mm) Between Arc (116.616mm,58.039mm) on Top Overlay And Pad LED4-2(117.856mm,58.039mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5026.867mil|Location2.X=5039.153mil|Location1.Y=2251.913mil|Location2.Y=2263.163mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5026.867mil|Location2.X=5039.153mil|Location1.Y=2251.913mil|Location2.Y=2263.163mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.154mm &lt; 0.254mm) Between Arc (126.141mm,58.039mm) on Top Overlay And Pad LED3-2(127.381mm,58.039mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5026.867mil|Location2.X=5039.207mil|Location1.Y=2306.836mil|Location2.Y=2318.086mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5026.867mil|Location2.X=5039.207mil|Location1.Y=2306.836mil|Location2.Y=2318.086mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.154mm &lt; 0.254mm) Between Arc (126.141mm,58.039mm) on Top Overlay And Pad LED3-2(127.381mm,58.039mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5401.867mil|Location2.X=5414.207mil|Location1.Y=2306.836mil|Location2.Y=2318.086mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5401.867mil|Location2.X=5414.207mil|Location1.Y=2306.836mil|Location2.Y=2318.086mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.154mm &lt; 0.254mm) Between Arc (135.666mm,58.039mm) on Top Overlay And Pad LED2-2(136.906mm,58.039mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5401.867mil|Location2.X=5414.153mil|Location1.Y=2251.913mil|Location2.Y=2263.163mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5401.867mil|Location2.X=5414.153mil|Location1.Y=2251.913mil|Location2.Y=2263.163mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.154mm &lt; 0.254mm) Between Arc (135.666mm,58.039mm) on Top Overlay And Pad LED2-2(136.906mm,58.039mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5776.867mil|Location2.X=5789.207mil|Location1.Y=2306.836mil|Location2.Y=2318.086mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5776.867mil|Location2.X=5789.207mil|Location1.Y=2306.836mil|Location2.Y=2318.086mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.154mm &lt; 0.254mm) Between Arc (145.191mm,58.039mm) on Top Overlay And Pad LED1-2(146.431mm,58.039mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5776.867mil|Location2.X=5789.153mil|Location1.Y=2251.913mil|Location2.Y=2263.163mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5776.867mil|Location2.X=5789.153mil|Location1.Y=2251.913mil|Location2.Y=2263.163mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.154mm &lt; 0.254mm) Between Arc (145.191mm,58.039mm) on Top Overlay And Pad LED1-2(146.431mm,58.039mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.154mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4364.254mil|Location2.X=4375.504mil|Location1.Y=2570.567mil|Location2.Y=2581.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4364.254mil|Location2.X=4375.504mil|Location1.Y=2570.567mil|Location2.Y=2581.817mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.185mm &lt; 0.254mm) Between Pad JACK-3(108.933mm,65.177mm) on Multi-Layer And Track (111.183mm,65.477mm)(112.433mm,65.477mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.185mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4201.898mil|Location2.X=4213.148mil|Location1.Y=2570.567mil|Location2.Y=2581.817mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4201.898mil|Location2.X=4213.148mil|Location1.Y=2570.567mil|Location2.Y=2581.817mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.185mm &lt; 0.254mm) Between Pad JACK-3(108.933mm,65.177mm) on Multi-Layer And Track (98.133mm,65.477mm)(106.683mm,65.477mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.185mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5649.502mil|Location2.X=5663.141mil|Location1.Y=2247.591mil|Location2.Y=2258.841mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5649.502mil|Location2.X=5663.141mil|Location1.Y=2247.591mil|Location2.Y=2258.841mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Pad LED1-1(143.891mm,58.039mm) on Multi-Layer And Track (143.591mm,56.926mm)(143.591mm,57.069mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5649.503mil|Location2.X=5663.112mil|Location1.Y=2311.158mil|Location2.Y=2322.408mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5649.503mil|Location2.X=5663.112mil|Location1.Y=2311.158mil|Location2.Y=2322.408mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Pad LED1-1(143.891mm,58.039mm) on Multi-Layer And Track (143.591mm,59.009mm)(143.591mm,59.152mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5792.737mil|Location2.X=5803.987mil|Location1.Y=2279.488mil|Location2.Y=2290.738mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5792.737mil|Location2.X=5803.987mil|Location1.Y=2279.488mil|Location2.Y=2290.738mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad LED1-2(146.431mm,58.039mm) on Multi-Layer And Text "+" (148.111mm,58.389mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5274.502mil|Location2.X=5288.141mil|Location1.Y=2247.591mil|Location2.Y=2258.841mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5274.502mil|Location2.X=5288.141mil|Location1.Y=2247.591mil|Location2.Y=2258.841mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Pad LED2-1(134.366mm,58.039mm) on Multi-Layer And Track (134.066mm,56.926mm)(134.066mm,57.069mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5274.503mil|Location2.X=5288.112mil|Location1.Y=2311.158mil|Location2.Y=2322.408mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5274.503mil|Location2.X=5288.112mil|Location1.Y=2311.158mil|Location2.Y=2322.408mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Pad LED2-1(134.366mm,58.039mm) on Multi-Layer And Track (134.066mm,59.009mm)(134.066mm,59.152mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5417.737mil|Location2.X=5428.987mil|Location1.Y=2279.488mil|Location2.Y=2290.738mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5417.737mil|Location2.X=5428.987mil|Location1.Y=2279.488mil|Location2.Y=2290.738mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad LED2-2(136.906mm,58.039mm) on Multi-Layer And Text "+" (138.586mm,58.389mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.502mil|Location2.X=4913.141mil|Location1.Y=2247.591mil|Location2.Y=2258.841mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.502mil|Location2.X=4913.141mil|Location1.Y=2247.591mil|Location2.Y=2258.841mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Pad LED3-1(124.841mm,58.039mm) on Multi-Layer And Track (124.541mm,56.926mm)(124.541mm,57.069mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.503mil|Location2.X=4913.112mil|Location1.Y=2311.158mil|Location2.Y=2322.408mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4899.503mil|Location2.X=4913.112mil|Location1.Y=2311.158mil|Location2.Y=2322.408mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Pad LED3-1(124.841mm,58.039mm) on Multi-Layer And Track (124.541mm,59.009mm)(124.541mm,59.152mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5042.737mil|Location2.X=5053.987mil|Location1.Y=2279.488mil|Location2.Y=2290.738mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5042.737mil|Location2.X=5053.987mil|Location1.Y=2279.488mil|Location2.Y=2290.738mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad LED3-2(127.381mm,58.039mm) on Multi-Layer And Text "+" (129.061mm,58.389mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4524.502mil|Location2.X=4538.141mil|Location1.Y=2247.591mil|Location2.Y=2258.841mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4524.502mil|Location2.X=4538.141mil|Location1.Y=2247.591mil|Location2.Y=2258.841mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Pad LED4-1(115.316mm,58.039mm) on Multi-Layer And Track (115.016mm,56.926mm)(115.016mm,57.069mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4524.503mil|Location2.X=4538.112mil|Location1.Y=2311.158mil|Location2.Y=2322.408mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4524.503mil|Location2.X=4538.112mil|Location1.Y=2311.158mil|Location2.Y=2322.408mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Pad LED4-1(115.316mm,58.039mm) on Multi-Layer And Track (115.016mm,59.009mm)(115.016mm,59.152mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4667.737mil|Location2.X=4678.987mil|Location1.Y=2279.488mil|Location2.Y=2290.738mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4667.737mil|Location2.X=4678.987mil|Location1.Y=2279.488mil|Location2.Y=2290.738mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad LED4-2(117.856mm,58.039mm) on Multi-Layer And Text "+" (119.536mm,58.389mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4149.502mil|Location2.X=4163.141mil|Location1.Y=2247.591mil|Location2.Y=2258.841mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4149.502mil|Location2.X=4163.141mil|Location1.Y=2247.591mil|Location2.Y=2258.841mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Pad LED5-1(105.791mm,58.039mm) on Multi-Layer And Track (105.491mm,56.926mm)(105.491mm,57.069mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4149.503mil|Location2.X=4163.112mil|Location1.Y=2311.158mil|Location2.Y=2322.408mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4149.503mil|Location2.X=4163.112mil|Location1.Y=2311.158mil|Location2.Y=2322.408mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.19mm &lt; 0.254mm) Between Pad LED5-1(105.791mm,58.039mm) on Multi-Layer And Track (105.491mm,59.009mm)(105.491mm,59.152mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.19mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4292.737mil|Location2.X=4303.987mil|Location1.Y=2279.488mil|Location2.Y=2290.738mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4292.737mil|Location2.X=4303.987mil|Location1.Y=2279.488mil|Location2.Y=2290.738mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad LED5-2(108.331mm,58.039mm) on Multi-Layer And Text "+" (110.011mm,58.389mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5779.385mil|Location2.X=5790.635mil|Location1.Y=2887.558mil|Location2.Y=2898.808mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5779.385mil|Location2.X=5790.635mil|Location1.Y=2887.558mil|Location2.Y=2898.808mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.216mm &lt; 0.254mm) Between Pad R1-1(146.939mm,74.295mm) on Multi-Layer And Track (146.939mm,72.263mm)(146.939mm,73.279mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5779.385mil|Location2.X=5790.635mil|Location1.Y=2551.192mil|Location2.Y=2562.442mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5779.385mil|Location2.X=5790.635mil|Location1.Y=2551.192mil|Location2.Y=2562.442mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.216mm &lt; 0.254mm) Between Pad R1-2(146.939mm,64.135mm) on Multi-Layer And Track (146.939mm,65.151mm)(146.939mm,66.167mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5614.375mil|Location2.X=5625.625mil|Location1.Y=2882.558mil|Location2.Y=2893.808mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5614.375mil|Location2.X=5625.625mil|Location1.Y=2882.558mil|Location2.Y=2893.808mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.216mm &lt; 0.254mm) Between Pad R2-1(142.748mm,74.168mm) on Multi-Layer And Track (142.748mm,72.136mm)(142.748mm,73.152mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5614.375mil|Location2.X=5625.625mil|Location1.Y=2546.192mil|Location2.Y=2557.442mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5614.375mil|Location2.X=5625.625mil|Location1.Y=2546.192mil|Location2.Y=2557.442mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.216mm &lt; 0.254mm) Between Pad R2-2(142.748mm,64.008mm) on Multi-Layer And Track (142.748mm,65.024mm)(142.748mm,66.04mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5459.375mil|Location2.X=5470.625mil|Location1.Y=2887.558mil|Location2.Y=2898.808mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5459.375mil|Location2.X=5470.625mil|Location1.Y=2887.558mil|Location2.Y=2898.808mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.216mm &lt; 0.254mm) Between Pad R3-1(138.811mm,74.295mm) on Multi-Layer And Track (138.811mm,72.263mm)(138.811mm,73.279mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5459.375mil|Location2.X=5470.625mil|Location1.Y=2551.192mil|Location2.Y=2562.442mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5459.375mil|Location2.X=5470.625mil|Location1.Y=2551.192mil|Location2.Y=2562.442mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.216mm &lt; 0.254mm) Between Pad R3-2(138.811mm,64.135mm) on Multi-Layer And Track (138.811mm,65.151mm)(138.811mm,66.167mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5309.375mil|Location2.X=5320.625mil|Location1.Y=2887.558mil|Location2.Y=2898.808mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5309.375mil|Location2.X=5320.625mil|Location1.Y=2887.558mil|Location2.Y=2898.808mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.216mm &lt; 0.254mm) Between Pad R4-1(135.001mm,74.295mm) on Multi-Layer And Track (135.001mm,72.263mm)(135.001mm,73.279mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5309.375mil|Location2.X=5320.625mil|Location1.Y=2551.192mil|Location2.Y=2562.442mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5309.375mil|Location2.X=5320.625mil|Location1.Y=2551.192mil|Location2.Y=2562.442mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.216mm &lt; 0.254mm) Between Pad R4-2(135.001mm,64.135mm) on Multi-Layer And Track (135.001mm,65.151mm)(135.001mm,66.167mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5154.375mil|Location2.X=5165.625mil|Location1.Y=2882.558mil|Location2.Y=2893.808mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5154.375mil|Location2.X=5165.625mil|Location1.Y=2882.558mil|Location2.Y=2893.808mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.216mm &lt; 0.254mm) Between Pad R5-1(131.064mm,74.168mm) on Multi-Layer And Track (131.064mm,72.136mm)(131.064mm,73.152mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5154.375mil|Location2.X=5165.625mil|Location1.Y=2546.192mil|Location2.Y=2557.442mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5154.375mil|Location2.X=5165.625mil|Location1.Y=2546.192mil|Location2.Y=2557.442mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.216mm &lt; 0.254mm) Between Pad R5-2(131.064mm,64.008mm) on Multi-Layer And Track (131.064mm,65.024mm)(131.064mm,66.04mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.216mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5803.28mil|Location2.X=5810.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5803.28mil|Location2.X=5810.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-1(147.828mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4903.28mil|Location2.X=4910.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4903.28mil|Location2.X=4910.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-10(124.968mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4803.28mil|Location2.X=4810.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4803.28mil|Location2.X=4810.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-11(122.428mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4703.28mil|Location2.X=4710.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4703.28mil|Location2.X=4710.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-12(119.888mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4603.28mil|Location2.X=4610.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4603.28mil|Location2.X=4610.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-13(117.348mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.28mil|Location2.X=4510.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.28mil|Location2.X=4510.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-14(114.808mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4403.28mil|Location2.X=4410.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4403.28mil|Location2.X=4410.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-15(112.268mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4303.28mil|Location2.X=4310.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4303.28mil|Location2.X=4310.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-16(109.728mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4203.28mil|Location2.X=4210.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4203.28mil|Location2.X=4210.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-17(107.188mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4103.28mil|Location2.X=4110.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4103.28mil|Location2.X=4110.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-18(104.648mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4003.28mil|Location2.X=4010.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4003.28mil|Location2.X=4010.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-19(102.108mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5703.28mil|Location2.X=5710.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5703.28mil|Location2.X=5710.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-2(145.288mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5813.921mil|Location2.X=5821.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5813.921mil|Location2.X=5821.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-20(147.828mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5713.921mil|Location2.X=5721.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5713.921mil|Location2.X=5721.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-21(145.288mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5613.921mil|Location2.X=5621.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5613.921mil|Location2.X=5621.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-22(142.748mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5513.921mil|Location2.X=5521.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5513.921mil|Location2.X=5521.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-23(140.208mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5413.921mil|Location2.X=5421.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5413.921mil|Location2.X=5421.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-24(137.668mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5313.921mil|Location2.X=5321.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5313.921mil|Location2.X=5321.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-25(135.128mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5213.921mil|Location2.X=5221.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5213.921mil|Location2.X=5221.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-26(132.588mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5113.921mil|Location2.X=5121.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5113.921mil|Location2.X=5121.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-27(130.048mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5013.921mil|Location2.X=5021.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5013.921mil|Location2.X=5021.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-28(127.508mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4913.921mil|Location2.X=4921.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4913.921mil|Location2.X=4921.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-29(124.968mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5603.28mil|Location2.X=5610.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5603.28mil|Location2.X=5610.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-3(142.748mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4813.921mil|Location2.X=4821.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4813.921mil|Location2.X=4821.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-30(122.428mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4713.921mil|Location2.X=4721.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4713.921mil|Location2.X=4721.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-31(119.888mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4613.921mil|Location2.X=4621.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4613.921mil|Location2.X=4621.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-32(117.348mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4513.921mil|Location2.X=4521.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4513.921mil|Location2.X=4521.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-33(114.808mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4413.921mil|Location2.X=4421.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4413.921mil|Location2.X=4421.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-34(112.268mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4313.921mil|Location2.X=4321.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4313.921mil|Location2.X=4321.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-35(109.728mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4213.921mil|Location2.X=4221.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4213.921mil|Location2.X=4221.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-36(107.188mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4113.921mil|Location2.X=4121.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4113.921mil|Location2.X=4121.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-37(104.648mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4013.921mil|Location2.X=4021.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4013.921mil|Location2.X=4021.587mil|Location1.Y=3076.167mil|Location2.Y=3083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-38(102.108mm,79.502mm) on Multi-Layer And Track (100.838mm,78.232mm)(149.098mm,78.232mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5503.28mil|Location2.X=5510.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5503.28mil|Location2.X=5510.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-4(140.208mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5403.28mil|Location2.X=5410.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5403.28mil|Location2.X=5410.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-5(137.668mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5303.28mil|Location2.X=5310.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5303.28mil|Location2.X=5310.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-6(135.128mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5203.28mil|Location2.X=5210.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5203.28mil|Location2.X=5210.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-7(132.588mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5103.28mil|Location2.X=5110.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5103.28mil|Location2.X=5110.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-8(130.048mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5003.28mil|Location2.X=5010.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Membros\Downloads\Nova_Placa_Antiga-main\Placa-protese-antiga-main\Copy of PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5003.28mil|Location2.X=5010.947mil|Location1.Y=4076.167mil|Location2.Y=4083.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U1-9(127.508mm,102.362mm) on Multi-Layer And Track (100.838mm,103.632mm)(149.098mm,103.632mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
