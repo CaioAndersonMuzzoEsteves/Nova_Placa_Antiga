@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=NetON/OFF_2 Pin=U1-2
+Removed Pin From Net: NetName=GND Pin=U1-3
+Removed Pin From Net: NetName=GND Pin=U1-24
+Removed Pin From Net: NetName=GND Pin=U1-38
+Added Pin To Net: NetName=NetON/OFF_2 Pin=U1-19
+Added Member To Class: ClassName=Copy of SCH Placa presentation Member=Component LED4 Blue, 3.2V, 40deg
